@@ -27,7 +27,7 @@ function AddTask({ onAddTaskSubmit }) {
       />
 
       <div>
-        <Input
+        {/* <Input
           checked={isHabit}
           onChange={() => {
             setHabit(!isHabit);
@@ -37,7 +37,7 @@ function AddTask({ onAddTaskSubmit }) {
         />
         <label className="pl-1 text-slate-500 text-w">
           Essa tarefa é um habito?
-        </label>
+        </label> */}
       </div>
       <button
         onClick={() => {
