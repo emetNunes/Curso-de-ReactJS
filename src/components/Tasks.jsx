@@ -24,9 +24,14 @@ function Tasks({ tasks, onTaskClick, onDeleteTask }) {
   return (
     <div className="space-y-4 p-6 bg-slate-200 rounded-md shadow">
       <h1 className="text-slate-500 font-bold border-b-2 pb-1 border-slate-400">
-        Tarefas
+        Tarefas - {taskFilterNoCompleter.length}
       </h1>
       <ul>
+        {taskFilterNoCompleter.length == 0 && (
+          <div className="text-slate-500">
+            Não tem nenhuma tarefa a ser concluida!
+          </div>
+        )}
         {taskFilterNoCompleter.map((task) => (
           <li key={task.id} className={`flex gap-2 pb-2`}>
             <button
@@ -67,9 +72,14 @@ function Tasks({ tasks, onTaskClick, onDeleteTask }) {
       </ul>
       <div>
         <h1 className="text-slate-500 font-bold border-b-2 pb-1 border-slate-400">
-          Concluidas
+          Concluidas - {taskFilterCompleter.length}
         </h1>
         <ul className="pt-3">
+          {taskFilterCompleter.length == 0 && (
+            <div className="text-slate-500">
+              Não tem nenhuma tarefa concluida!
+            </div>
+          )}
           {taskFilterCompleter.map((task) => (
             <li key={task.id} className={`flex gap-2 pb-2`}>
               <button
