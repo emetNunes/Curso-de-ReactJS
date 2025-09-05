@@ -1,4 +1,10 @@
-import { CheckIcon, ChevronRightIcon, TrashIcon } from "lucide-react";
+import {
+  CheckIcon,
+  ChevronRightIcon,
+  Circle,
+  CircleCheckBig,
+  TrashIcon,
+} from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 
@@ -12,37 +18,97 @@ function Tasks({ tasks, onTaskClick, onDeleteTask }) {
     navigate(`/task?${query.toString()}`);
   }
 
+  var taskFilterNoCompleter = tasks.filter((task) => !task.isCompleted);
+  var taskFilterCompleter = tasks.filter((task) => task.isCompleted);
+
   return (
     <div className="space-y-4 p-6 bg-slate-200 rounded-md shadow">
       <h1 className="text-slate-500 font-bold border-b-2 pb-1 border-slate-400">
         Tarefas
       </h1>
       <ul>
-        {tasks.map((task) => (
+        {taskFilterNoCompleter.map((task) => (
           <li key={task.id} className={`flex gap-2 pb-2`}>
             <button
               onClick={() => onTaskClick(task.id)}
-              className={`bg-slate-400 w-full text-left text-white p-2 rounded-md 
+              className={`
                 ${
-                  task.isCompleted &&
-                  "line-through flex item-center text-gray-500"
-                }
+                  task.isCompleted ? "bg-slate-300" : "bg-slate-400"
+                } w-full text-left flex text-white p-2 rounded-md 
+                ${task.isCompleted && "line-through text-gray-500 "}
               `}
             >
-              {task.isCompleted && <CheckIcon />}
-              {task.title}
+              <div className="my-auto mr-3">
+                {task.isCompleted ? <CircleCheckBig /> : <Circle />}
+              </div>
+              <div>
+                <div>{task.title}</div>
+                <div className="text-gray-200">{task.description}</div>
+              </div>
             </button>
 
-            <Button onClick={() => onSeeDetails(task)}>
+            <Button
+              onClick={() => onSeeDetails(task)}
+              condicionalButton={`
+                ${task.isCompleted ? "bg-slate-300" : "bg-slate-400"}`}
+            >
               <ChevronRightIcon />
             </Button>
 
-            <Button onClick={() => onDeleteTask(task.id)}>
+            <Button
+              onClick={() => onDeleteTask(task.id)}
+              condicionalButton={`
+                ${task.isCompleted ? "bg-slate-300" : "bg-slate-400"}`}
+            >
               <TrashIcon />
             </Button>
           </li>
         ))}
       </ul>
+      <div>
+        <h1 className="text-slate-500 font-bold border-b-2 pb-1 border-slate-400">
+          Concluidas
+        </h1>
+        <ul className="pt-3">
+          {taskFilterCompleter.map((task) => (
+            <li key={task.id} className={`flex gap-2 pb-2`}>
+              <button
+                onClick={() => onTaskClick(task.id)}
+                className={`
+                ${
+                  task.isCompleted ? "bg-slate-300" : "bg-slate-400"
+                } w-full text-left flex text-white p-2 rounded-md 
+                ${task.isCompleted && "line-through text-gray-500 "}
+              `}
+              >
+                <div className="my-auto mr-3">
+                  {task.isCompleted ? <CircleCheckBig /> : <Circle />}
+                </div>
+                <div>
+                  <div>{task.title}</div>
+                  <div className="text-gray-200">{task.description}</div>
+                </div>
+              </button>
+
+              <Button
+                onClick={() => onSeeDetails(task)}
+                condicionalButton={`
+                ${task.isCompleted ? "bg-slate-300" : "bg-slate-400"}`}
+              >
+                <ChevronRightIcon />
+              </Button>
+
+              <Button
+                onClick={() => onDeleteTask(task.id)}
+                condicionalButton={`
+                ${task.isCompleted ? "bg-slate-300" : "bg-slate-400"}`}
+              >
+                <TrashIcon />
+              </Button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
