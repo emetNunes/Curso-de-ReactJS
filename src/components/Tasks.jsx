@@ -61,7 +61,7 @@ function Tasks({ tasks, onTaskClick, onDeleteTask }) {
                   backgroundColor: task.category !== "" ? "F24B59" : "F2ECEB",
                 }}
               >
-                {task.category.category}
+                {task.category.category !== "" ? task.category.category : ""}
               </div>
 
               <div onClick={() => onSeeDetails(task)} className=" w-64">

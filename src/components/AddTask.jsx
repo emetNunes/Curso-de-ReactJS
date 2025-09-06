@@ -7,7 +7,6 @@ function AddTask({ onAddTaskSubmit }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [categoryColor, setCategoryColor] = useState("");
 
   const [clickInInput, setClickInInput] = useState(true);
   const [clickInCategory, setClickInCategory] = useState(true);
@@ -107,7 +106,6 @@ function AddTask({ onAddTaskSubmit }) {
           setDescription("");
           setCategory("");
           setClickInInput(true);
-          setCategoryColor("#F2ECEB");
           setClickInCategory(true);
         }}
         className="bg-[#447EF2] text-white px-4 py-3 rounded-md font-medium"
