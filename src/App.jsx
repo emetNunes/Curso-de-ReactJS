@@ -50,20 +50,20 @@ function App() {
     });
   }
 
-  function onAddTaskSubmit(title, description, category) {
+  function onAddTaskSubmit(title, description, category, categoryColor) {
     const newTask = {
       id: v4(),
       title,
       description,
-      category,
+      category: { category, categoryColor },
       isCompleted: false,
     };
     setTasks([...tasks, newTask]);
   }
 
   return (
-    <div className="w-screen h-screen bg-slate-500  flex justify-center p-6">
-      <div className="w-[500px] space-y-4">
+    <div className=" w-screen h-screen  flex justify-center p-6">
+      <div className="relative w-[500px] space-y-4">
         <Title>Lista de habitos</Title>
         <AddTask onAddTaskSubmit={onAddTaskSubmit} />
         <Tasks

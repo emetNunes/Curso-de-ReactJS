@@ -1,10 +1,14 @@
 function Input(props) {
   return (
-    <div className="flex flex-col">
-      <label className="font-medium text-slate-700">{props.label}</label>
+    <div className={`flex flex-col ${props.condicionalInput}`}>
+      <label className="font-medium mb-1 text-[#0D0D0D]">{props.label}</label>
 
       <input
-        className="border border-slate-300 outline-slate-400 px-4 py-2 rounded-md"
+        className={` 
+          border bg-[#f2eceb] 
+          text-[#0D0D0D] placeholder:text-[#808080]
+           border-[#c7c5c5] border-x-0 border-t-0 outline-[#c7c5c5] px-4 py-2
+          `}
         {...props}
       />
     </div>
