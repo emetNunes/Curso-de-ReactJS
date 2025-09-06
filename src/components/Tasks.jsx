@@ -39,16 +39,24 @@ function Tasks({ tasks, onTaskClick, onDeleteTask }) {
               className={`
                 ${
                   task.isCompleted ? "bg-slate-300" : "bg-slate-400"
-                } w-full text-left flex text-white p-2 rounded-md 
-                ${task.isCompleted && "line-through text-gray-500 "}
+                } w-full text-left flex text-white p-2 rounded-md relative
+                ${task.isCompleted && "line-through text-gray-500  "}
               `}
             >
               <div className="my-auto mr-3">
                 {task.isCompleted ? <CircleCheckBig /> : <Circle />}
               </div>
-              <div>
-                <div>{task.title}</div>
-                <div className="text-gray-200">{task.description}</div>
+
+              <div className="truncate bg-white text-slate-500 rounded-md absolute right-2 h-6 w-20 px-1 text-center">
+                {task.category ? task.category : "Sem categoria"}
+              </div>
+
+              <div className=" w-48">
+                <div className="break-all">{task.title}</div>
+
+                <div className="text-gray-200 break-all">
+                  {task.description}
+                </div>
               </div>
             </button>
 
@@ -70,6 +78,7 @@ function Tasks({ tasks, onTaskClick, onDeleteTask }) {
           </li>
         ))}
       </ul>
+
       <div>
         <h1 className="text-slate-500 font-bold border-b-2 pb-1 border-slate-400">
           Concluidas - {taskFilterCompleter.length}

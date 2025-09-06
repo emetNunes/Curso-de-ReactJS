@@ -50,12 +50,12 @@ function App() {
     });
   }
 
-  function onAddTaskSubmit(title, description, isHabit) {
+  function onAddTaskSubmit(title, description, category) {
     const newTask = {
       id: v4(),
       title,
       description,
-      isHabit,
+      category,
       isCompleted: false,
     };
     setTasks([...tasks, newTask]);

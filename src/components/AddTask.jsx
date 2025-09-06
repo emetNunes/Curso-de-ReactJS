@@ -4,11 +4,12 @@ import Input from "./Input";
 function AddTask({ onAddTaskSubmit }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [isHabit, setHabit] = useState(false);
+  const [category, setCategory] = useState("");
 
   return (
     <div className="space-y-4 p-6 bg-slate-200 rounded-md flex flex-col shadow">
       <Input
+        label="Habito"
         type="text"
         placeholder="Digite o titulo da tarefa"
         value={title}
@@ -16,8 +17,9 @@ function AddTask({ onAddTaskSubmit }) {
           setTitle(event.target.value);
         }}
       />
-
+      <div className="border border-slate-300"></div>
       <Input
+        label="Descrição"
         type="text"
         placeholder="Digite a descrição"
         value={description}
@@ -25,30 +27,25 @@ function AddTask({ onAddTaskSubmit }) {
           setDescription(event.target.value);
         }}
       />
-
-      <div>
-        {/* <Input
-          checked={isHabit}
-          onChange={() => {
-            setHabit(!isHabit);
-          }}
-          value={isHabit}
-          type="checkbox"
-        />
-        <label className="pl-1 text-slate-500 text-w">
-          Essa tarefa é um habito?
-        </label> */}
-      </div>
+      <Input
+        label="Categoria"
+        type="text"
+        placeholder="Adicione uma categoria"
+        value={category}
+        onChange={(event) => {
+          setCategory(event.target.value);
+        }}
+      />
       <button
         onClick={() => {
-          if (!title.trim() || !description.trim()) {
-            return alert("Preecha o titulo e a descrição da tarefa.");
+          if (!title.trim()) {
+            return alert("Preecha o titulo da tarefa.");
           }
 
-          onAddTaskSubmit(title, description, isHabit);
+          onAddTaskSubmit(title, description, category);
           setTitle("");
-          setHabit(false);
           setDescription("");
+          setCategory("");
         }}
         className="bg-slate-500 text-white px-4 py-2 rounded-md font-medium"
       >
