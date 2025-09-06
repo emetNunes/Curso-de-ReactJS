@@ -50,12 +50,12 @@ function App() {
     });
   }
 
-  function onAddTaskSubmit(title, description, category, categoryColor) {
+  function onAddTaskSubmit(title, description, category) {
     const newTask = {
       id: v4(),
       title,
       description,
-      category: { category, categoryColor },
+      category: { category },
       isCompleted: false,
     };
     setTasks([...tasks, newTask]);
