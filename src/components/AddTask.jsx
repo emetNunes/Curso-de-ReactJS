@@ -96,12 +96,7 @@ function AddTask({ onAddTaskSubmit }) {
             return alert("Preecha o titulo da tarefa.");
           }
 
-          if (category != "") {
-            onAddTaskSubmit(title, description, category, "#F24B59");
-          } else {
-            onAddTaskSubmit(title, description, category, "#F2ECEB");
-          }
-
+          onAddTaskSubmit(title, description, category);
           setTitle("");
           setDescription("");
           setCategory("");

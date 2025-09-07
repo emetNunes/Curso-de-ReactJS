@@ -55,7 +55,7 @@ function App() {
       id: v4(),
       title,
       description,
-      category: { category },
+      category,
       isCompleted: false,
     };
     setTasks([...tasks, newTask]);

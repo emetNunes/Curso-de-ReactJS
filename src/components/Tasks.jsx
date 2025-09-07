@@ -58,10 +58,11 @@ function Tasks({ tasks, onTaskClick, onDeleteTask }) {
                   task.category == "" && "hidden"
                 } truncate bg-white rounded-md absolute right-2 h-6 w-20 px-1 text-center`}
                 style={{
-                  backgroundColor: task.category !== "" ? "F24B59" : "F2ECEB",
+                  backgroundColor: task.category ? "#F24B59" : "#F2ECEB",
                 }}
               >
-                {task.category.category !== "" ? task.category.category : ""}
+                {console.log(task)}
+                {task.category !== "" ? task.category : ""}
               </div>
 
               <div onClick={() => onSeeDetails(task)} className=" w-64">
