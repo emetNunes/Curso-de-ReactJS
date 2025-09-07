@@ -16,6 +16,7 @@ function Tasks({ tasks, onTaskClick, onDeleteTask }) {
     const query = new URLSearchParams();
     query.set("title", task.title);
     query.set("description", task.description);
+    query.set("category", task.category);
     navigate(`/task?${query.toString()}`);
   }
 
@@ -65,8 +66,8 @@ function Tasks({ tasks, onTaskClick, onDeleteTask }) {
                 {task.category !== "" ? task.category : ""}
               </div>
 
-              <div onClick={() => onSeeDetails(task)} className=" w-64">
-                <div className="break-all font-bold text-[#0D0D0D]">
+              <div onClick={() => onSeeDetails(task)} className="w-[100%]">
+                <div className="break-all  w-40 font-bold text-[#0D0D0D]">
                   {task.title}
                 </div>
 
@@ -91,6 +92,7 @@ function Tasks({ tasks, onTaskClick, onDeleteTask }) {
         <h1 className="text-[#0D0D0D] font-medium border-b-2 pb-1 border-[#c7c5c5]">
           Concluidas - {taskFilterCompleter.length}
         </h1>
+
         <ul className="pt-3">
           {taskFilterCompleter.length == 0 && (
             <div className="text-[#447EF2] font-medium">

@@ -64,7 +64,7 @@ function App() {
   return (
     <div className=" w-screen h-screen  flex justify-center p-6">
       <div className="relative w-[500px] space-y-4">
-        <Title>Lista de habitos</Title>
+        <Title>Poder do Habito</Title>
         <AddTask onAddTaskSubmit={onAddTaskSubmit} />
         <Tasks
           tasks={tasks}

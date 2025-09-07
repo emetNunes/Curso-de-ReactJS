@@ -14,7 +14,7 @@ function AddTask({ onAddTaskSubmit }) {
   return (
     <div className="space-y-4 p-6 bg-[#F2ECEB] rounded-md flex flex-col shadow">
       <Input
-        label="Faça seu Habito"
+        label="Crie sua tarefa"
         type="text"
         placeholder="Digite o titulo da tarefa"
         value={title}
@@ -36,7 +36,7 @@ function AddTask({ onAddTaskSubmit }) {
 
       <div className="flex gap-2">
         <Input
-          condicionalInput={!clickInInput ? "w-96" : "w-full hidden"}
+          condicionalInput={!clickInInput ? "w-[100%]" : "w-full hidden"}
           type="text"
           placeholder="Digite a descrição"
           value={description}
@@ -73,7 +73,7 @@ function AddTask({ onAddTaskSubmit }) {
       )}
       <div className="flex gap-2">
         <Input
-          condicionalInput={!clickInCategory ? "w-96 " : " w-full hidden"}
+          condicionalInput={!clickInCategory ? "w-[100%]" : " w-full hidden"}
           type="text"
           placeholder="Adicione uma categoria"
           value={category}
